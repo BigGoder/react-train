@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
+import { Redirect } from 'umi';
 import styles from './BasicLayout.less';
 import BottomBar from '../components/BottomBar';
 
@@ -8,11 +9,16 @@ const mapStateProps = ({ user }) => {
 };
 
 function BasicLayout(props) {
-  const { children, location, dispatch, user } = props;
+  const { children, location, dispatch, isLogin } = props;
+  //const showBottomNav = location.pathname !== '/login';
+  const showBottomNav = true;
+
   return (
     <div className={styles.main}>
       <article>{children}</article>
-      <footer>{BottomBar && <BottomBar pathname={location.pathname} />}</footer>
+      <footer>
+        {showBottomNav && <BottomBar pathname={location.pathname} />}
+      </footer>
     </div>
   );
 }

@@ -40,12 +40,12 @@ export default defineConfig({
       component: '@/layouts/BasicLayout',
       routes: [
         { path: '/', component: '@/pages/home/index' },
-        { path: '/login', component: '@/pages/login/index' },
         { path: '/search', component: '@/pages/search/index' },
         { path: '/cart', component: '@/pages/cart/index' },
         { path: '/olist', component: '@/pages/olist/index' },
         { path: '/user', component: '@/pages/user/index' },
         { path: '/product/:id', component: '@/pages/product/index' },
+        { path: '/login', component: '@/pages/login/index' },
       ],
     },
   ],

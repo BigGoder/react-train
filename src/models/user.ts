@@ -5,6 +5,7 @@ export default {
   state: {
     title: 'Welcome to zzh Bolg',
     name: 'wise',
+    isLogin: false,
   },
   effects: {
     *login({ payload }, { call }) {

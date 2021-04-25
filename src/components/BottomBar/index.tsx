@@ -29,24 +29,22 @@ interface BottomNavProps {
   pathname: string;
 }
 
-export default class BottomBar extends Component<BottomNavProps> {
-  render() {
-    const { pathname } = this.props;
-    return (
-      <TabBar tintColor="red" unselectedTintColor="black">
-        {menu.map(({ title, link, icon }) => (
-          <TabBar.Item
-            key={link}
-            title={title}
-            icon={<span className={'iconfont icon-' + icon}></span>}
-            selectedIcon={<span className={'red iconfont icon-' + icon}></span>}
-            selected={pathname === link}
-            onPress={() => {
-              history.push(link);
-            }}
-          ></TabBar.Item>
-        ))}
-      </TabBar>
-    );
-  }
+export default function BottomBar(props: BottomNavProps) {
+  let { pathname } = props;
+  return (
+    <TabBar tintColor="red" unselectedTintColor="black">
+      {menu.map(({ title, link, icon }) => (
+        <TabBar.Item
+          key={link}
+          title={title}
+          icon={<span className={'iconfont icon-' + icon}></span>}
+          selectedIcon={<span className={'red iconfont icon-' + icon}></span>}
+          selected={pathname === link}
+          onPress={() => {
+            history.push(link);
+          }}
+        ></TabBar.Item>
+      ))}
+    </TabBar>
+  );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import styles from './index.less';
 import { connect } from 'dva';
+import { Redirect, history, Link } from 'umi';
 
 const mapStateToProps = ({ user }) => {
   return { ...user };
@@ -8,7 +9,7 @@ const mapStateToProps = ({ user }) => {
 
 function IndexPage(props) {
   console.log('props', props);
-  const { dispatch } = props;
+  const { dispatch, isLogin } = props;
   const changeTile = () => {
     dispatch({
       type: 'user/changeTitle',
@@ -22,6 +23,18 @@ function IndexPage(props) {
       payload: params,
     });
   };
+
+  if (!isLogin) {
+    return (
+      // <Redirect to={{ pathname: '/login'}}
+      // />
+
+      <Link to="/login" />
+      //history.push('/list')
+    );
+  }
+
+  useEffect(() => {});
 
   return (
     <div>
