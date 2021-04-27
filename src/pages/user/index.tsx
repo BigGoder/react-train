@@ -32,12 +32,8 @@ function IndexPage(props) {
   return (
     <div>
       <h1 className={styles.title}>Page index</h1>
-      <h2>{props.title}</h2>
-      <h3 onClick={changeTile}> 点击一下换标题 </h3>
-      <h3 onClick={handleSubmit.bind(this, { name: 'zzh', password: 'zzh' })}>
-        {' '}
-        请求接口{' '}
-      </h3>
+      <h2>{props.name}</h2>
+      <h3> {props.userid} </h3>
     </div>
   );
 }

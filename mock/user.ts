@@ -38,7 +38,7 @@ export default {
   ],
   'POST /api/login': (req: Request, res: Response) => {
     const { password, name } = req.body;
-    if (password === 'zzh' && name === 'zzh') {
+    if (password === 'zzh' && name === '15395232200') {
       res.send({
         status: 1,
         name: '莎士比亚',

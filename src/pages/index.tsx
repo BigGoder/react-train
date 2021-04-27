@@ -8,12 +8,11 @@ const mapStateToProps = ({ user }) => {
 };
 
 function IndexPage(props) {
-  console.log('props', props);
   const { dispatch, isLogin } = props;
   const changeTile = () => {
     dispatch({
       type: 'user/changeTitle',
-      payload: '周泽浩的react',
+      payload: 'react',
     });
   };
 
