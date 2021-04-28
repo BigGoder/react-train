@@ -8,10 +8,12 @@ const mapStateProps = ({ user }) => {
   return { ...user };
 };
 
+const hideCompenents = ['/search'];
+
 function BasicLayout(props) {
   const { children, location, dispatch, isLogin } = props;
-  //const showBottomNav = location.pathname !== '/login';
-  const showBottomNav = true;
+  const showBottomNav = hideCompenents.indexOf(location.pathname) == -1;
+  //const showBottomNav = true;
 
   return (
     <div className={styles.main}>
