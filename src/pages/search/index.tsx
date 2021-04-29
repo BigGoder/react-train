@@ -8,34 +8,26 @@ export default function Page() {
   let params = {
     pageNo: 0,
     pageSize: 10,
-    searchKey: '',
   };
 
-  const [searchkey, setKey] = useState('');
   const [list, setList] = useState([]);
   const [pagination, setPagination] = useState(params);
-  const [name, setName] = useState('');
 
   useEffect(() => {
     submit({
       pageNo: 0,
     });
-  }, [searchkey]);
+  }, []);
 
   const search = (value) => {
-    setKey(value);
-    setName('zzh');
-    console.log('key', searchkey);
-    console.log('name', name);
-
-    //submit({pageNo:0})
+    submit({ pageNo: 0, key: value });
   };
 
   const submit = useCallback(async (value) => {
     let params = {
       ...pagination,
       pageNo: value.pageNo,
-      searchKey: searchkey,
+      searchKey: value.key,
     };
 
     let response = await query(params);

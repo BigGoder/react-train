@@ -23,7 +23,7 @@ export default function index(props) {
           setValue(value);
           submit(value);
         }}
-        onClear={(value) => {
+        onClear={(v) => {
           setValue('');
         }}
       />
