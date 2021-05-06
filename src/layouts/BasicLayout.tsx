@@ -12,7 +12,9 @@ const hideCompenents = ['/search'];
 
 function BasicLayout(props) {
   const { children, location, dispatch, isLogin } = props;
-  const showBottomNav = hideCompenents.indexOf(location.pathname) == -1;
+  const showBottomNav =
+    hideCompenents.indexOf(location.pathname) == -1 &&
+    location.pathname.indexOf('product') == -1;
   //const showBottomNav = true;
 
   return (

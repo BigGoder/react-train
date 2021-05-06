@@ -50,7 +50,7 @@ function Item({ img, title, price, tags, id }) {
   return (
     <WingBlank>
       <WhiteSpace size="md" />
-      <Link to={'/producd?' + id} className={styles.item}>
+      <Link to={'/product/' + id} className={styles.item}>
         <img src={img} />
         <div className={styles.content}>
           <span>{title}</span>
