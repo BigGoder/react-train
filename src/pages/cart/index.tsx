@@ -1,10 +1,41 @@
-import React from 'react';
-import styles from './index.less';
+import { connect } from 'umi';
+import { Form, Input, Button, Radio } from 'antd';
 
-export default function Page() {
+function Page(props) {
+  const [form] = Form.useForm();
+  console.log('props', props);
+  const [goods] = props;
   return (
     <div>
-      <h1 className={styles.title}>Page cart/index</h1>
+      <Form form={form} layout="vertical">
+        <Form.Item label="Required Mark" name="requiredMarkValue">
+          <Radio.Group>
+            <Radio.Button value="optional">Optional</Radio.Button>
+            <Radio.Button value>Required</Radio.Button>
+            <Radio.Button value={false}>Hidden</Radio.Button>
+          </Radio.Group>
+        </Form.Item>
+      </Form>
     </div>
   );
 }
+
+// function Node(props){
+//     const [imgSrc,title,price,num] = props
+
+//     return (
+//         <div className='item'>
+//             <img src={imgSrc}  />
+//             <div>
+//                 <div>{title}</div>
+//                 <span></span>
+//             </div>
+//         </div>
+//     )
+// }
+
+const mapPropsState = ({ cart }) => {
+  return { ...cart };
+};
+
+export default connect(mapPropsState)(Page);

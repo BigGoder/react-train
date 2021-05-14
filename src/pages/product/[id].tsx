@@ -3,10 +3,12 @@ import styles from './[id].less';
 import { query } from '@/services/product';
 import { Card, Carousel } from 'antd-mobile';
 import Tags from '@/components/Tags';
+import { connect } from 'dva';
 import ToolBar from '../../components/NavBar';
+import Cart2Buy from './cart2buy';
 import { useState, useCallback, useEffect } from 'react';
 
-export default function Page(props) {
+function Page(props) {
   interface ProductType {
     id: String;
     imgs: [];
@@ -23,8 +25,10 @@ export default function Page(props) {
   };
 
   const [item, setItem] = useState(obj);
+  const { id } = props.match.params;
+  const { dispatch } = props;
+
   useEffect(() => {
-    const { id } = props.match.params;
     queryId(id);
   }, []);
 
@@ -35,9 +39,21 @@ export default function Page(props) {
     }
   };
 
+  const add2cart = () => {
+    dispatch({
+      type: 'cart/addCart',
+      payload: item,
+    });
+  };
+
+  const goPay = () => {
+    console.log('goPay');
+  };
+
   return (
     <div>
       <ToolBar title="商品详情"></ToolBar>
+      {item.id}
       <Card full>
         <Carousel
           autoplay={true}
@@ -65,6 +81,9 @@ export default function Page(props) {
       <p className={styles.labelPrice}>Y{item.price}</p>
       <p className={styles.labelTitle}>{item.title}</p>
       <Tags tags={item.tags}></Tags>
+      <Cart2Buy id={id} add2cart={add2cart} goPay={goPay}></Cart2Buy>
     </div>
   );
 }
+
+export default connect()(Page);
