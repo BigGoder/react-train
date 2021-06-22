@@ -53,7 +53,6 @@ function Page(props) {
   return (
     <div>
       <ToolBar title="商品详情"></ToolBar>
-      {item.id}
       <Card full>
         <Carousel
           autoplay={true}
