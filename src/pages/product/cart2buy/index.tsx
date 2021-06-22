@@ -7,7 +7,7 @@ import { editCart } from '@/services/editCart';
 import { useCallback } from 'react';
 
 const mapStateToProps = ({ cart, props }) => {
-  return { ...cart, ...props };
+  return { goods: [...cart.goods], ...props };
 };
 
 interface ProductId {
